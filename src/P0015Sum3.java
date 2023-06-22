@@ -103,6 +103,46 @@ public class P0015Sum3 {
         }
         return list;
     }
+
+    public List<List<Integer>> threeSum4(int[] nums) {
+        List<List<Integer>>res = new ArrayList<>();
+        if(nums.length<3)return res;
+        Arrays.sort(nums);
+        for(int i = 0; i<nums.length-2;i++){
+            if(i>0 && nums[i-1]==nums[i])continue;
+            if(nums[i]>0)return res;
+            int target = 0-nums[i];
+            int left = i+1;
+            int right = nums.length-1;
+            while(left<nums.length-1 && left<right){
+                if(nums[left]+nums[right]==target){
+                    res.add(Arrays.asList(nums[i],nums[left],nums[right]));
+                    left++;
+                    right--;
+                    while(left<right && nums[left]==nums[left-1]){//这里判定重复的时候必须用left<right，因为【0，0，0】，left会不断的➕超出length
+                        left++;
+                    }
+                    while(left<right && nums[right]==nums[right+1]){
+                        right--;
+                    }
+                }
+                else if(nums[left]+nums[right]>target){
+                    right--;
+                     while(left<right && nums[right]==nums[right+1]){
+                        right--;
+                    }
+                }
+                else{
+                    left++;
+                     while(left<right && nums[left]==nums[left-1]){
+                        left++;
+                    }
+                }
+            }
+        }
+        return res;
+    }
+
 }
 /*
 P0015Sum3 p15=new P0015Sum3();

@@ -19,6 +19,25 @@ public class P0011ContainerWithMostWater_2pointers {
         }
         return maxarea;
     }
+    public int maxArea3(int[] height) {
+        //get area: maxwidth (length between two lines)* maxheight(shorter one)
+        int left = 0;
+        int right = height.length-1;
+        int maxArea = Integer.MIN_VALUE;
+        while(right>left){
+           int width = Math.abs(left-right);
+           int curheight = Math.min(height[right],height[left]);
+           int currentArea = width*curheight;//求出当前面积
+           maxArea = Math.max(currentArea,maxArea);//更新结果
+           if(height[right]<height[left]){//移动指针
+               right--;
+           }
+           else{
+               left++;
+           }
+        }
+        return maxArea;
+    }
     public int maxArea1(int[] height) {
         int maxArea = Integer.MIN_VALUE;
         int leftPoint = 0;
