@@ -1,8 +1,10 @@
+
+
 public class P0111BinaryTreePath {
     public int minDepth(TreeNode root){
         if(root==null)return 0;
         if(root.left==null){
-           return minDepth(root.right)+1; 
+           return minDepth(root.right)+1;
         }
         if(root.right==null){
             return minDepth(root.left)+1;
@@ -28,7 +30,9 @@ public class P0111BinaryTreePath {
             helpMin(node.right, depth+1);
         }
     }
-    
+
+
+
     /*
     这道题目的难点在于需要考虑的是找到没有左右children的Leaf，所以对于只存在一个child的情况需要单独处理。
     //若left child不存在或者是right child不存在，不能返回min，因为这时候root是有一个right child的，

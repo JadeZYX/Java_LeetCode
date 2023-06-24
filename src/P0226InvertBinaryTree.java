@@ -1,3 +1,6 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class P0226InvertBinaryTree {
     public TreeNode invertTree(TreeNode root) {
         if (root == null) return null;
@@ -8,7 +11,7 @@ public class P0226InvertBinaryTree {
         root.left = root.right;
         root.right = temp;
         // 遍历框架，去遍历左右子树的节点
-        invertTree(root.left);
+        invertTree(root.left);//这里虽然此函数有返回值，但是因为不需要，所以不需要接收储存
         invertTree(root.right);
         return root;
     }
@@ -23,6 +26,26 @@ public class P0226InvertBinaryTree {
        root.left = rightnew;
        root.right = leftnew;
        return root;
+    }
+
+
+    public TreeNode invertTreeDFS(TreeNode root) {//DFS做法
+        if(root == null) return root;
+        Queue <TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        while(!queue.isEmpty()){
+            TreeNode node = queue.poll();//由于添加的时候就判定节点不为null，所以这里肯定不是null，再写它的left和right也就不会出错了。
+            TreeNode temp = node.left;
+            node.left = node.right;
+            node.right = temp;
+            if(node.right != null){
+                queue.offer(node.right);
+            }
+            if(node.left != null){
+                queue.offer(node.left);
+            }
+        }
+        return root;
     }
 }
 /*
