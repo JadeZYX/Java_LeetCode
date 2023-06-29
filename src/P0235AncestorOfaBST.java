@@ -1,6 +1,27 @@
 import java.util.ArrayList;
 
 public class P0235AncestorOfaBST {
+    public TreeNode lowestCommonAncestor0(TreeNode root, TreeNode p, TreeNode q) {//递归
+        if(root == null || root == p || root == q) return root;
+       // if(root.val>p.val && root.val<q.val) return root; return语句中包含这种情况
+       // if(root.val<p.val && root.val>q.val) return root;
+        if(p.val<root.val && q.val<root.val){
+            return lowestCommonAncestor(root.left, p,q);
+        }
+        if(p.val>root.val && q.val>root.val){
+            return lowestCommonAncestor(root.right, p, q);
+        }
+        return root;//p,q不管谁大谁小，但只要位于root的左右子树上，则都应该返回root
+    }
+    /*
+因为是BST，站在传入的节点上(以6为例子)，如果p,q一个节点大，一个比节点小，则说明p,q在6的两侧子树上，当前就是LCA。（比如 example 1）
+如果p,q都比传入的节点小，则递归函数搜索的时候只要搜节点的左子树 （example 2）
+如果pq都比传入的节点大，则递归搜索右子树
+如果q,p任意一个值等于传入的节点，则之间返回当前传入的节点即可
+example2 分析： 2，4小于6，则调用递归函数走左侧，这时候传入的参数2正好是P，直接返回2即可。不需再找6
+若p=3,q=5，则首先递归函数走左侧子树，传入2，3和5大于2，则递归函数走2的右子树即传入4，此时3和5位于4为root的两侧，则返回4，一层层的像上传递4，直到第一层开始递归函数的位置
+*/
+
     public TreeNode lowestCommonAncestor(TreeNode root,TreeNode p,TreeNode q){
         ArrayList<TreeNode> pathP=getPass(root,p);
         ArrayList<TreeNode>pathQ=getPass(root,q);

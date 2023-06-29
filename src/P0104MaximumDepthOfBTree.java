@@ -21,8 +21,6 @@ public class P0104MaximumDepthOfBTree {
     public int maxDepth(TreeNode root) {// 自下而上
         if (root == null)
             return 0;
-        if (root.left == null && root.right == null)
-            return 1;
         // 这里如果判断是叶子节点可以减少调用递归函数取叶子节点的左右节点，但要注意，到了叶子节点要返回1，而不是0，因为叶子节点是存在的
         if (root.left == null && root.right == null)
             return 1;
@@ -57,7 +55,7 @@ public class P0104MaximumDepthOfBTree {
         return maxdep;
     }
 
-    private void helpmaxDepth2(TreeNode node, int dep) {//// 传入参数是当前节点的深度
+    private void helpmaxDepth2(TreeNode node, int dep) {//传入参数是当前节点的深度
         if (node == null) {
             return;
         } // 当为叶节点的时候进行对比且更新全局变量，且node==null返回，所以传入的dep是当前node的深度
