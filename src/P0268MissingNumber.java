@@ -49,11 +49,11 @@ public class P0268MissingNumber {
     public int missingNumber(int[] nums) { // XOR做法 a^b^b=a a^a=0 a^0=a 0^0=0
         int ans = 0;
         for (int i = 0; i <= nums.length; ++i) {//0到N前后都为闭区间时进行每个数到位异或
-            ans = ans ^ i;
+            ans = ans ^ i;//0^0 = 0, 0^1=1...//0^1^2^3^4^5......^nums.length
         }
         for (int n : nums) { //上面的结果与缺少某个数的数组的元素进行位异或，得出的数就是缺少的数
-            ans = ans ^ n; 
-        } 
+            ans = ans ^ n;//a^a=0 最终会得到0^x=x而x就是我们需要的结果
+        }
         return ans;
     }
 
