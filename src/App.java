@@ -4,8 +4,8 @@
 
 public class App {
     public static void main(String[] args) {
-        P0079WordSearch p79 = new P0079WordSearch();
-        System.out.println(p79.exist(new char[][]{{'A','B','C','E'},{'S','F','C','S'},{'A','D','E','E'}}, "ABCB"));
+
+
         /*
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please input a number: ");

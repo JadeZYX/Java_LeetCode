@@ -1,4 +1,24 @@
 public class P0338_CountingBits {
+
+
+    public int[] countBits11(int n) {//这种方式好理解
+        //we need to count sum of 1 in number from 0 to n
+        int[]res = new int[n+1];
+        for(int i = 0; i<=n;i++){
+            int bitNum = hammingWeight(i);//传入每个数，调用函数求它的1的个数
+            res[i]=bitNum;
+        }
+        return res;
+    }
+
+    private int hammingWeight(int n){
+        int count = 0;
+        while(n!=0){
+            n=n&(n-1);
+            count++;
+        }
+        return count;
+    }
     public int[] countBits0(int n){
         int[]ans=new int[n+1];
         for(int i=0;i<=n;i++){//时间复杂度最差是32*N
