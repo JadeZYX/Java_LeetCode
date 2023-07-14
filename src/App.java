@@ -1,11 +1,11 @@
-
+import java.util.ArrayList;
 
 //import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-
-
+        P0133CloneGraph p133 = new P0133CloneGraph();
+        System.out.println(p133.cloneGraph(new Node(1,list)));
         /*
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please input a number: ");

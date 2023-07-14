@@ -9,7 +9,7 @@ public class P0200NumberOfIslands {
                 if (grid[i][j] == '1') {
                     count++;
                     setZero1(i, j, grid);
-                    setZero(i, j, grid);//用一个即可
+                  //  setZero(i, j, grid);//用一个即可
                 }
             }
         }
@@ -57,7 +57,7 @@ public class P0200NumberOfIslands {
             this.y = y;
         }
     }
-    
+
 }
 /*
  * //深度优先：当遇到岛屿时候，count++，为了防止count重复duplicate计算，可以向四周扩散，把周边都是1的位置全置换成0，
