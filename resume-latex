@@ -1,0 +1,87 @@
+\documentclass[a4paper,fontsize=11pt]{scrartcl}
+
+\usepackage[top=0.5in, bottom=0.5in, left=0.5in, right=0.5in]{geometry}
+\usepackage{enumitem}
+
+\begin{document}
+\begin{centering}
+\LARGE \textbf{Jade Zhang \\}
+\end{centering}
+\begin{raggedright}
+\thispagestyle{empty}
+\normalsize xxx@gmail.com $\mid$ 425-xxx-xxxx    \\
+\normalsize GitHub: https://github.com/JadeZYX    \\
+\normalsize LinkedIn: https://www.linkedin.com/in/jadezhangyx/    \\
+\hrulefill
+\vspace{3mm}
+\end{raggedright}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TECH SKILLS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent \large \textbf{\underline{TECH SKILLS}} \\ \\
+\noindent \textbf{Front End: } {React, Javascript, CSS, Html, Axios, DAO, Redux, Redux Saga} \\
+\noindent \textbf{Back End: } {Express, NodeJS, MongoDB, MySQL, PostgreSQL, Firebase} \\
+\noindent \textbf{Testing/Deployment: } {Mocha, AWS EC2, NGINX, Loader.io} \\
+\noindent \textbf{Developer Tools: } {Git, npm, Webpack, Babel} \\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% WORK EXPERIENCE
+% What did you do? -> Project goals OR what problem did you solve?
+% How did you do it? -> Skills and technologies
+% What impact did you create? -> Numbers and percentages.
+% Example: 
+% + Developed an app for matching mentor and mentees for Android and iOS platform.
+% + Successfully matched 85% of the applications and randomized the rest.
+% 
+% Talk about team work, initiative, soft skills.
+%
+% Can also include personal projects, competitions, contribution to Open source.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent \large \textbf{\underline{WORK EXPERIENCE}} \\ \\
+\textbf{MeetFood} \hfill Seattle, United States \\
+\textit{ Software Engineer Intern} \hfill Jan 2023 $-$ Apr 2023
+\vspace{2mm}
+\begin{itemize}[noitemsep,nolistsep,leftmargin=*]
+\item {MeetFood is a short-video app to make food exploring and purchasing fun, it uniquely connects users to resturants via video stories created by content creators}
+\item {The product includes 2 versions: MobileApp and WebApp, my main responsibility is frontend and developing the smart menu page for WebApp, which displays the menu and user-upload videos of the resturant}
+\item {The tech stack includes React, Typescript, CSS and Html}
+\item {Other responsibilities includes writing unit tests, fixing issues and releasing the web app} \\
+\end{itemize} 
+
+\noindent \textbf{Snail Games} \hfill Suzhou, China \\
+\textit{ Operation Specialist} \hfill Sep 2018 $-$ Mar 2018 \\
+
+\noindent \large \textbf{\underline{PROJECTS}} \\ \\
+\noindent \textbf{Marios Retail Store} \\
+\textit {\small{GitHub: https://github.com/marios-retail-store/retail-app}} \\
+\textit{\small{Elementa Designs: https://github.com/Elemental-Designs/ReviewsService}}
+\vspace{2mm}
+\begin{itemize}[noitemsep,nolistsep,leftmargin=*]
+\item {Collaborate with 3 people and responsilbe for the frontend of QA section and Api service of Reviews.}
+\item {Optimized fronted using React tree shaking, lazy loading and setup Webpack configuration to improve Lighthouse performance by 35\%.}
+\item {Reduced Postgres query latency time by refactoring queries and creating indexes.}
+\item {Increased system availability and throughput by 38\% to 2k clients per second and average response time for 1000RPS dropped by 97\% by using AWS EC2 micro servers and NGINX load balancer.} \\
+\end{itemize}
+
+\noindent \textbf{GoalSeeker} \\
+\textit {\small{GitHub: https://github.com/AzureSource/GoalSeekr}} 
+\vspace{2mm}
+\begin{itemize}[noitemsep,nolistsep,leftmargin=*]
+\item {The site is a web application with live multiplayer gameplay inspired by Habitica \& Spaceward.}
+\item {Collaborate with 7 people and responsilbe for Google authentication login using firebase.}
+\item {Used hash router, routes from react-router-dom to implement the routing to different pages and components.} \\
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EDUCATION
+% University name, degree, year of graduation, GPA (optional)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent \large \textbf{\underline{EDUCATION}} \\ \\
+\textbf{Hack Reactor} \hfill Seattle, US \\
+\textit{Advanced Software Engineering Immersive}   \hfill May 2022 - Aug 2022 \\ \\
+\textbf{Southern Federal University} \hfill Rostov-on-Don, Russia \\
+\textit{Bachelor of Arts,  Applied Philology}  \hfill 2011 - 2015 \\
+
+
+\end{document}
