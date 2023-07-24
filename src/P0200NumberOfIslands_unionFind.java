@@ -9,7 +9,7 @@ public class P0200NumberOfIslands_unionFind {
                 if(grid[i][j]=='0'){
                     continue;
                 }
-                if(i-1>=0&&grid[i-1][j]=='1'){//将左侧和上方union，避免重复操作，不需要向四个方向
+                if(i-1>=0&&grid[i-1][j]=='1'){
                     uf.union(mapPos(i,j,n), mapPos(i-1,j,n));
                 }
                 if(j-1>=0&&grid[i][j-1]=='1'){
@@ -60,7 +60,7 @@ public class P0200NumberOfIslands_unionFind {
             for(int j = 0;j<grid[0].length;j++){
                 if(grid[i][j]=='1'){//如果遇到1，则说明当前是岛屿，所以岛屿+1
                     sumIslands+=1;
-                    setSurroundingIslandsZero(grid,i,j);//并把与此岛屿相连接的岛屿‘1’全设置成‘0’
+                    setSurroundingIslandsZero(grid,i,j);//并把与此岛屿设置成‘0’
                 }
             }
         }
@@ -72,6 +72,7 @@ public class P0200NumberOfIslands_unionFind {
             return;
         }
         grid[i][j]='0';
+        //把此岛屿的周边岛屿设置成‘0’
         setSurroundingIslandsZero(grid,i-1,j);
         setSurroundingIslandsZero(grid,i+1,j);
         setSurroundingIslandsZero(grid,i,j-1);
@@ -80,8 +81,10 @@ public class P0200NumberOfIslands_unionFind {
 
 }
 /*
-        P0200NumberOfIslands_unionFind p200 = new P0200NumberOfIslands_unionFind();
-        System.out.println(p200.numIslands(new char[][]{{'1','1','0','0','0'},{'1','1','0','0','0'},{'0','0','1','0','0'},{'0','0','0','1','1'}}));
+P0200NumberOfIslands p200 = new P0200NumberOfIslands();
+System.out.println(p200.numIslands0(new char[][]{{'1','1','1'},
+                                                 {'0','1','0'},
+                                                 {'1','1','1'}}));
  */
 
 //深度优先：当遇到岛屿时候，count++，为了防止count重复duplicate计算，可以向四周扩散，把周边都是1的位置全置换成0，这个操作可以用递归来实现。递归三要素：结束条件，中间操作，最后的递归传递。 递归函数的部分：要先考虑结束条件 1）当超出矩阵范围的时候，是二维矩阵，所以要考虑column和row的取值范围；2）当所在值不为1的时候结束。  递归中间操作就是把1改成0；
