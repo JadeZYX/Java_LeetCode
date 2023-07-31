@@ -32,7 +32,7 @@ public class P0261GraphValidTree_UnionFind {
     for(int i = 0;i<edges.length;i++){
       int root1 = uf.find(edges[i][0]);
       int root2 = uf.find(edges[i][1]);
-      if(root1 == root2) return false;
+      if(root1 == root2) return false;//如果它们本身就有同一个祖宗且又相邻，则成了环，所以false
       uf.union(root1, root2);
     }
     return false;
