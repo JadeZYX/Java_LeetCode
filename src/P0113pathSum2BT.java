@@ -4,7 +4,7 @@ import java.util.List;
 public class P0113pathSum2BT {
     List<List<Integer>>ans=new ArrayList<>();
     int Tsum;
-    public List<List<Integer>>pathSum(TreeNode root,int targetSum){//加法
+    public List<List<Integer>>pathSum(TreeNode root,int targetSum){//加法 backtracking
         this.Tsum=targetSum;
         List<Integer>paths=new ArrayList<>();
         helpPath(root,0,paths);
@@ -18,8 +18,6 @@ public class P0113pathSum2BT {
             if(sum==Tsum){
              ans.add(new ArrayList<>(path));//copy出来的list，对原结果没有影响
             }
-            path.remove(path.size()-1);//比如走到7后发现[5,4,11,7]不对，则扔掉7才能找到[5,4,11,2]
-            return;
         }
         helpPath(node.left, sum,path);
         helpPath(node.right, sum,path);
@@ -47,5 +45,24 @@ public class P0113pathSum2BT {
         }
         path.remove(path.size()-1);
     }
+
+    public List<List<Integer>> pathSum2(TreeNode root, int targetSum) {
+        List<List<Integer>>list = new ArrayList<>();
+        if(root == null) return list;
+        helper(root, targetSum, list, new ArrayList<>());
+        return list;
+    }
+    void helper(TreeNode node, int target,List<List<Integer>>list,ArrayList<Integer>path){
+        if(node == null) return;
+            path.add(node.val);
+            target-=node.val;
+        if(node.left == null && node.right == null && target ==0){
+            list.add(new ArrayList<>(path));
+        }
+        helper(node.left,target,list,path);
+        helper(node.right,target,list,path);
+        path.remove(path.size()-1);
+    }
+
 
 }

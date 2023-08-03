@@ -1,7 +1,7 @@
 
 
 public class P0111BinaryTreePath {
-    public int minDepth(TreeNode root){
+    public int minDepth(TreeNode root){//自下而上做法
         if(root==null)return 0;
         if(root.left==null){
            return minDepth(root.right)+1;
@@ -31,19 +31,26 @@ public class P0111BinaryTreePath {
         }
     }
 
-    public int minDepth2(TreeNode root) {
+    int minDep = Integer.MAX_VALUE;
+    public int minDepth2(TreeNode root) {//自上而下
+        //必须在叶子节点返回结果
         if(root == null) return 0;
-        if(root.left == null && root.right == null) return 1;
-        if(root.left == null){
-            return minDepth(root.right)+1;
-        }
-        if(root.right==null){
-            return minDepth(root.left)+1;
-        }
-        return Math.min(minDepth(root.left), minDepth(root.right))+1;
+        helper(root,0);
+        return minDep;
     }
-
-
+    private void helper(TreeNode node, int curDep){
+        if(node == null) return;
+        if(node.left == null && node.right == null){
+            minDep = Math.min(curDep+1, minDep);//curDep+当前抵达的叶子节点
+        }
+        curDep++;//非叶子节点非null节点
+        if(node.left != null){
+            helper(node.left,curDep);
+        }
+        if(node.right != null){
+            helper(node.right,curDep);
+        }
+    }
 
     /*
     这道题目的难点在于需要考虑的是找到没有左右children的Leaf，所以对于只存在一个child的情况需要单独处理。

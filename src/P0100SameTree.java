@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class P0100SameTree {
     public boolean isSameTree0(TreeNode p, TreeNode q){
-        ArrayList<Integer> arr1=new ArrayList<>();
+        ArrayList<Integer> arr1=new ArrayList<>();//必须存值，不能存Node，因为node为null时用equal比较会出错
         ArrayList<Integer> arr2=new ArrayList<>();
 
         PreTraversal(p, arr1);

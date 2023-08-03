@@ -26,6 +26,28 @@ public class P0098ValidateBinarySearchTree {
     return isValidHelper(node.left,minNode,node) && isValidHelper(node.right, node, maxNode);
   }
 
+  boolean isValid = true;
+    public boolean isValidBST2(TreeNode root) {
+        //不能只判断每个subtree的左右子树比它的parent节点一个大，一个小
+        //同时左子树的每个节点都要比root节点小，且右子树的每个节点都要比它的root节点大
+        //所以检查每一个节点是否在合法的取值范围内，每个节点都有个最大值最小值
+        validHelper(root,null,null);
+        return isValid;
+    }
+    void validHelper(TreeNode node, TreeNode minNode, TreeNode maxNode){
+        if(node == null) return;
+        if(minNode != null && node.val <= minNode.val){
+                isValid = false;
+                return;
+        }
+        if(maxNode != null && node.val >= maxNode.val){
+            isValid = false;
+            return;
+        }
+        validHelper(node.left,minNode,node);
+        validHelper(node.right,node,maxNode);
+    }
+
 
 }
 /* 这道题目的陷阱在于不能只简单的用这个代码

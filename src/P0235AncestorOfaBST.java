@@ -5,13 +5,16 @@ public class P0235AncestorOfaBST {
         if(root == null || root == p || root == q) return root;
        // if(root.val>p.val && root.val<q.val) return root; return语句中包含这种情况
        // if(root.val<p.val && root.val>q.val) return root;
+       //如果q,p都比所处的跟节点值小，则需要在左子树查找
         if(p.val<root.val && q.val<root.val){
             return lowestCommonAncestor(root.left, p,q);
         }
+        //如果q,p都比所处的跟节点的值大，则需要在右子树查找
         if(p.val>root.val && q.val>root.val){
             return lowestCommonAncestor(root.right, p, q);
         }
         return root;//p,q不管谁大谁小，但只要位于root的左右子树上，则都应该返回root
+         //如果一个比parent.val大，一个比parent.val小，则说明在两侧，直接返回parent节点
     }
     /*
 因为是BST，站在传入的节点上(以6为例子)，如果p,q一个节点大，一个比节点小，则说明p,q在6的两侧子树上，当前就是LCA。（比如 example 1）
@@ -23,6 +26,7 @@ example2 分析： 2，4小于6，则调用递归函数走左侧，这时候传�
 */
 
     public TreeNode lowestCommonAncestor(TreeNode root,TreeNode p,TreeNode q){
+        //先获得从root到P和Q的路径并存储在list里。然后找出两个list里最后的一个共同值。O(n)+S(n)
         ArrayList<TreeNode> pathP=getPass(root,p);
         ArrayList<TreeNode>pathQ=getPass(root,q);
         TreeNode ancestor=null;
@@ -32,7 +36,8 @@ example2 分析： 2，4小于6，则调用递归函数走左侧，这时候传�
             }
             else{
                 break;//在这里break确保了得出来的i是最lowest的最近的公共祖先
-            }
+            }//比如[6,2],[6,2,4]先是6为ancestor，再2更新成ancestor，也就是最后一个一样的值
+            //比如[6,2],[6,8]先是6.然后2和8值不一样，说明出现分叉路经，所以终止循环
         }
         return ancestor;
     }
@@ -51,7 +56,7 @@ example2 分析： 2，4小于6，则调用递归函数走左侧，这时候传�
         pass.add(root);
         return pass;
     }
-    //先获得从root到P和Q的路径并存储在list里。然后找出两个list里最后的一个共同值。O(n)+S(n)
+
     public TreeNode lowestCommonAncestor1(TreeNode root,TreeNode p,TreeNode q){//O(n)+S(1)
         TreeNode ancestor=root;
         while(true){
