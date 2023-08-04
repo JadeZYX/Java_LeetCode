@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 public class P0105ConstructionBTFromPreorderAndInorder {
-  public TreeNode buildTree(int[]preorder,int[]inorder){
+  public TreeNode buildTree0(int[]preorder,int[]inorder){
     HashMap<Integer,Integer>in_map = new HashMap<>();
     for(int i = 0;i<inorder.length;i++){
       in_map.put(inorder[i], i);//因为需要查找root节点在中序遍历的位置，所以要把中序遍历的pair加入map
@@ -19,6 +19,30 @@ public class P0105ConstructionBTFromPreorderAndInorder {
     root.right = dfs(preorder,in_map, left_subtree_len+preL+1,preR,root_position+1,inR);
     return root;
   }
+
+
+  public TreeNode buildTree(int[] preorder, int[] inorder) {
+    //preorder : root, left, right , this is the entrance
+    //inorder : left, root, right
+    //因为通过前序遍历找到root，它在中序遍历中的位置是index，这样index的左侧就是左子树，右侧就是右子树
+    //所以需要用hashmap记录每个节点的位置
+    HashMap<Integer,Integer>in_map = new HashMap<>();
+    for(int i = 0;i<inorder.length;i++){
+        in_map.put(inorder[i],i);
+    }
+    return buildTreeHelper(in_map,preorder,0,0,inorder.length-1);//树根位置(通过preorder确定)和当前节点的左右子树的范围(inorder确定)
+    //in_map就是inorder数组，preorder数组，当前跟节点在preorder的位置(所以初始值是index为0的位置),当前这棵树的左右子树boundary
+    //左右子树的范围是不断缩小的，起初是整个inorder，然后随着root不断的改变，左右子树范围也逐渐缩小，所以当inStart>inEnd时候越界
+}
+private TreeNode  buildTreeHelper(HashMap<Integer,Integer>map,int[]preorder,int preIndex, int inStart,int inEnd){
+    if(preIndex > preorder.length || inStart > inEnd) return null;
+    TreeNode root = new TreeNode(preorder[preIndex]);
+    int rootPos = map.get(root.val);//找到root在inorder中的位置，从而确定其左子树范围和右子树范围
+    int leftSubtreeLen = rootPos-inStart;//通过root在inorder位置及start位置确定左子树长度,不要+1，不包含最后一个root元素
+    root.left = buildTreeHelper(map,preorder,preIndex+1,inStart,rootPos-1);
+    root.right = buildTreeHelper(map,preorder,preIndex+leftSubtreeLen+1,rootPos+1,inEnd);
+    return root;
+}
 }
 
 /*  1 取preorder的第一个元素创建当前的root 因为preorder是root，left，right，而inorder是left，root，right
@@ -31,4 +55,8 @@ public class P0105ConstructionBTFromPreorderAndInorder {
  *  4 递归左子树
  *  5 递归右子树
  *  6 Base Case：当要处理的子树为空(preorder=inorder=[])
+ *
+ *
+ P0105ConstructionBTFromPreorderAndInorder p105 = new P0105ConstructionBTFromPreorderAndInorder();
+ System.out.println(p105.buildTree(new int[]{3,9,20,15,7}, new int[]{9,3,15,20,7}));
  */

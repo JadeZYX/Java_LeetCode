@@ -42,4 +42,8 @@ public class P0230KthSmallestElementInBST {
          preorder(node.left, queue);
          preorder(node.right, queue);
      }
+
+    //  P0230KthSmallestElementInBST p230 = new P0230KthSmallestElementInBST();
+    //  BinarySearchTree bt = new BinarySearchTree(new int[]{3,1,4,2});
+    //  System.out.println(p230.kthSmallest(bt.root, 1));
 }

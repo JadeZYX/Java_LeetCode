@@ -21,15 +21,15 @@ public class P0226InvertBinaryTree {
         if(root == null){
             return root;
         }
-       TreeNode leftnew = invertTree(root.left);
-       TreeNode rightnew = invertTree(root.right);
+       TreeNode leftnew = invertTree1(root.left);
+       TreeNode rightnew = invertTree1(root.right);
        root.left = rightnew;
        root.right = leftnew;
        return root;
     }
 
 
-    public TreeNode invertTreeDFS(TreeNode root) {//DFS做法
+    public TreeNode invertTreeDFS(TreeNode root) {//BFS做法
         if(root == null) return root;
         Queue <TreeNode> queue = new LinkedList<>();
         queue.offer(root);

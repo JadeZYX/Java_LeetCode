@@ -7,6 +7,18 @@ public class App {
         // P0133CloneGraph p133 = new P0133CloneGraph();
         // System.out.println(p133.cloneGraph(new Node(1,list)));
 
+        // P0226InvertBinaryTree p226=new P0226InvertBinaryTree();
+        // BinaryTree bt=new BinaryTree(new Integer[]{4,2,7,1,3,6,9});
+        // BinaryTree bt1=new BinaryTree(new Integer[]{2,1,3});
+        // BinaryTree bt2=new BinaryTree(new Integer[]{});
+        // BinaryTree.printTree(p226.invertTree1(bt.root));
+        // System.out.println();
+
+        // P0235AncestorOfaBST p235 = new P0235AncestorOfaBST();
+        // BinarySearchTree bt = new BinarySearchTree(new int[]{6,2,8,0,4,7,9,3,5});
+        // TreeNode p = new TreeNode(2);
+        // TreeNode q = new TreeNode(4);
+        // BinarySearchTree.printTree(p235.lowestCommonAncestor5(bt.root, p,q));
         /*
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please input a number: ");
