@@ -8,7 +8,7 @@ public class P0019RemoveNthNodeFromEndOfLinkedList {
         for(int i=0;i<n;i++){//fast先走N步，使快慢指针距离差N
             fast=fast.next;
         }
-        while(fast.next!=null){
+        while(fast.next!=null){//此时fast在链表尾部
             fast=fast.next;
             slow=slow.next;
         }
@@ -36,6 +36,33 @@ public class P0019RemoveNthNodeFromEndOfLinkedList {
        slow.next = slow.next.next;
        return dummy.next;
     }
+
+
+    public ListNode removeNthFromEnd2(ListNode head, int n) {//straightforward方法
+        if(head == null) return null;
+        if(head.next == null && n ==1) return null;
+        int count = 1;
+        ListNode p = head;
+        //size of the list
+        while(p.next != null){
+            count++;
+            p = p.next;
+        }
+        //如果长度为4，要删除倒数第四个，也就是删除第一个，所以返回head.next
+        if(count == n) {
+            head = head.next;
+            return head;
+        }
+        ListNode prev= head;
+        //count - n 是要删除节点的前一个
+        for(int i = 1;i<count-n;i++){
+    //因为此时prev已经在头节点上了，所以是1，当取到count-n的时候，prev=prev.next就到了删除节点，所以要在它之前就停止loop
+            prev = prev.next;
+        }
+        prev.next = prev.next.next;
+        return head;
+    }
+
 }
 /*
 这里快慢指针的距离始终是n,所以当fast走到尾部，slow指针的位置与结尾正好差了n个，也就是它的下一个就是要删除的节点。

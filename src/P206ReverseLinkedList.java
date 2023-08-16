@@ -51,6 +51,17 @@ public class P206ReverseLinkedList {
         head.next = null;//cut off current connection即 2.next->null
         return reversed;//return reversed head
     }
+
+    ListNode newhead = null;
+    public ListNode reverseList3(ListNode head) {
+        if(head == null) return null;
+        if(head != null && head.next == null) return head;
+        newhead = reverseList3(head.next); //找到最底层的头节点
+        //更改cur.next的方向和cur的指针方向   cur.next的下一个节点指向cur，原来的指针断开 cur.next指向null
+        head.next.next = head;//不能用newhead.next = head因为new head是全局变量
+        head.next = null;
+        return newhead;
+    }
 }
 /*
 本题目是reverse 原链表，而不是复制或者重新创建一个不一样的地址的新链表，也就是要原地修改

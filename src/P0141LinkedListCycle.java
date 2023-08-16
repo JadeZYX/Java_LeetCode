@@ -1,5 +1,6 @@
 public class P0141LinkedListCycle {
     public boolean hasCycle(ListNode head){
+        if(head == null || head.next == null) return false;
         ListNode fast=head;
         ListNode slow=head;
         while(fast!=null&&fast.next!=null){
@@ -30,5 +31,6 @@ public class P0141LinkedListCycle {
 }
 /*
  如何思考while循环的condition？ 如果是个环，则不存在end，则一旦快慢指针到达一样位置则说明有环。若不是个环就会有end节点，则就要考虑节点不为null的情况
- P141题是要找出在哪个位置相遇，是这道题目的进阶版
+ P142题是要找出在哪个位置相遇，是这道题目的进阶版
+ 如果有环，则快慢指针一定会有相遇的机会。 如果无环，则总会有循环到链表尾巴节点的时候
  */

@@ -22,6 +22,30 @@ public class P0023MergeKSortedLists {
     }
     return dummy.next;
   }
+
+  public ListNode mergeKLists1(ListNode[] lists) {
+    if(lists.length == 0) return null;
+    PriorityQueue<ListNode>queue = new PriorityQueue<>((a,b)->(a.val - b.val));//从小到大
+    //把lists里每条链表的每个值都添加到队列
+    for(ListNode node:lists){
+        if(node != null){
+            queue.offer(node);//此时添加的是每跳链表的头节点
+            ListNode nextNode = node.next;
+            while(nextNode!=null){
+                queue.offer(nextNode);
+                nextNode = nextNode.next;
+            }
+        }
+    }
+    ListNode dummy = new ListNode(-1);
+    ListNode p = dummy;
+    while(!queue.isEmpty()){
+        ListNode popE = queue.poll();
+        p.next = new ListNode(popE.val);
+        p = p.next;
+    }
+    return dummy.next;
+}
 }
 /*
  * array里面会有K条链表，所以不太能用two pointer，merge 2 sorted linked list的解法来做
