@@ -9,7 +9,7 @@ public class P0033SearchInRotatedSortedArray {
     if (pivot[1] == target) {// 如果最低值和目标值一致，直接返回最低值的索引
       return pivot[0];// 索引
     } // 这里不需要考虑target会小于最小值的情况，因为找到的最小值就已经是array里的最小值了
-    else {// pivot[1]>target 只会有等于和大于两种情况。所以用if,else。
+    else {// pivot[1]<target 只会有等于和xiao于两种情况。所以用if,else。
       // 需要对比target和right位置上的值，然后缩减范围
       if (target <= nums[nums.length - 1]) {// target在最低点与right之间，则找pivot+1，到length-1
         result = binarySearch(nums, pivot[0] + 1, nums.length - 1, target);
@@ -37,7 +37,7 @@ public class P0033SearchInRotatedSortedArray {
       if (nums[left] <= nums[right]) {
         res[0] = left;
         res[1] = nums[left];
-        return res;
+        return res;//这里必须写return，否则会因为left <= right成立陷入死循环
       } else if (nums[mid] < nums[right]) {
         right = mid;
       } else {// nums[mid]>nums[right]
