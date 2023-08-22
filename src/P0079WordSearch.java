@@ -2,7 +2,8 @@ public class P0079WordSearch {
   public boolean exist(char[][]board,String word){
     for(int i = 0;i<board.length;i++){
       for(int j = 0;j<board[0].length;j++){
-        if(board[i][j] == word.charAt(0) && dfsHelper(board,word,i,j,0) ){
+        //这里不能写成if(condition){return helper()}必须是if(condition && true){return true} 因为如果写成这种形式，第一次找到第一个字母的位置就决定了最后的结果。可其实是如果这个位置找到了第一个字母，但也许不能找到其他字母，所以要继续找board的其他位置。所以说是在整个board里只要找到一条满足的条件即可
+        if(board[i][j] == word.charAt(0) && dfsHelper(board,word,i,j,0) ){//这里要传入index0岁人已经确定了board[i][j]就是第一个字母。因为在DFS里还要判断board[i][j]是否等于word.charAt(index)如果这里传入index1，则i,j也需要做相应调整了
           return true;//index 表示当前找到哪个字母
         }
       }
